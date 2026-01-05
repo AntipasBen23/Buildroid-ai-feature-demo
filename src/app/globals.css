@@ -24,3 +24,170 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+:root {
+  /* Buildroid Brand Colors */
+  --buildroid-orange: #FF6B00;
+  --buildroid-orange-hover: #E66000;
+  --buildroid-orange-light: #FF8533;
+  --buildroid-dark: #0A0E27;
+  --buildroid-dark-secondary: #151B3D;
+  --buildroid-gray: #8B92B0;
+  --buildroid-gray-light: #C4C9D9;
+  --buildroid-success: #00D68F;
+  --buildroid-warning: #FFB946;
+  --buildroid-error: #FF4757;
+  --buildroid-white: #FFFFFF;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-[#0A0E27] text-white font-sans antialiased;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold;
+  }
+
+  h1 {
+    @apply text-4xl md:text-5xl;
+  }
+
+  h2 {
+    @apply text-3xl md:text-4xl;
+  }
+
+  h3 {
+    @apply text-2xl md:text-3xl;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-[#FF6B00] hover:bg-[#E66000] text-white font-semibold px-6 py-3 rounded-lg transition-all duration-200 shadow-lg hover:shadow-xl;
+  }
+
+  .btn-secondary {
+    @apply bg-[#151B3D] hover:bg-[#1F2749] text-white font-semibold px-6 py-3 rounded-lg transition-all duration-200 border border-[#8B92B0]/20;
+  }
+
+  .card {
+    @apply bg-[#151B3D] rounded-xl p-6 border border-[#8B92B0]/10 shadow-lg;
+  }
+
+  .card-hover {
+    @apply card hover:border-[#FF6B00]/30 hover:shadow-xl transition-all duration-300;
+  }
+
+  .input-field {
+    @apply bg-[#0A0E27] border border-[#8B92B0]/20 rounded-lg px-4 py-2 text-white placeholder-[#8B92B0] focus:outline-none focus:border-[#FF6B00] focus:ring-1 focus:ring-[#FF6B00] transition-all;
+  }
+
+  .badge-success {
+    @apply bg-[#00D68F]/10 text-[#00D68F] px-3 py-1 rounded-full text-sm font-medium;
+  }
+
+  .badge-warning {
+    @apply bg-[#FFB946]/10 text-[#FFB946] px-3 py-1 rounded-full text-sm font-medium;
+  }
+
+  .badge-error {
+    @apply bg-[#FF4757]/10 text-[#FF4757] px-3 py-1 rounded-full text-sm font-medium;
+  }
+
+  .badge-info {
+    @apply bg-[#FF6B00]/10 text-[#FF6B00] px-3 py-1 rounded-full text-sm font-medium;
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-[#FF6B00] to-[#FF8533] bg-clip-text text-transparent;
+  }
+
+  .pulse-orange {
+    @apply animate-pulse;
+    animation-duration: 2s;
+  }
+}
+
+@layer utilities {
+  .text-shadow {
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  }
+
+  .glow-orange {
+    box-shadow: 0 0 20px rgba(255, 107, 0, 0.3);
+  }
+
+  .glow-orange-strong {
+    box-shadow: 0 0 30px rgba(255, 107, 0, 0.5);
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0A0E27;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #8B92B0;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #FF6B00;
+}
+
+/* Animations */
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 0.5s ease-out;
+}
+
+.animate-slide-in-up {
+  animation: slideInUp 0.5s ease-out;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out;
+}

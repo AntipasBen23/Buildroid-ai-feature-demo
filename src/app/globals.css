@@ -1,117 +1,165 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-}
-:root {
-  /* Buildroid Brand Colors */
-  --buildroid-orange: #FF6B00;
-  --buildroid-orange-hover: #E66000;
-  --buildroid-orange-light: #FF8533;
-  --buildroid-dark: #0A0E27;
-  --buildroid-dark-secondary: #151B3D;
-  --buildroid-gray: #8B92B0;
-  --buildroid-gray-light: #C4C9D9;
-  --buildroid-success: #00D68F;
-  --buildroid-warning: #FFB946;
-  --buildroid-error: #FF4757;
-  --buildroid-white: #FFFFFF;
-}
-
 @layer base {
   * {
-    @apply border-border;
+    border-color: rgb(139 146 176 / 0.1);
   }
   
   body {
-    @apply bg-[#0A0E27] text-white font-sans antialiased;
+    background-color: #0A0E27;
+    color: white;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
       'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
       sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-bold;
+    font-weight: 700;
   }
 
   h1 {
-    @apply text-4xl md:text-5xl;
+    font-size: 2.25rem;
   }
 
   h2 {
-    @apply text-3xl md:text-4xl;
+    font-size: 1.875rem;
   }
 
   h3 {
-    @apply text-2xl md:text-3xl;
+    font-size: 1.5rem;
+  }
+
+  @media (min-width: 768px) {
+    h1 {
+      font-size: 3rem;
+    }
+    h2 {
+      font-size: 2.25rem;
+    }
+    h3 {
+      font-size: 1.875rem;
+    }
   }
 }
 
 @layer components {
   .btn-primary {
-    @apply bg-[#FF6B00] hover:bg-[#E66000] text-white font-semibold px-6 py-3 rounded-lg transition-all duration-200 shadow-lg hover:shadow-xl;
+    background-color: #FF6B00;
+    color: white;
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    transition: all 0.2s;
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+  }
+
+  .btn-primary:hover {
+    background-color: #E66000;
+    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1);
   }
 
   .btn-secondary {
-    @apply bg-[#151B3D] hover:bg-[#1F2749] text-white font-semibold px-6 py-3 rounded-lg transition-all duration-200 border border-[#8B92B0]/20;
+    background-color: #151B3D;
+    color: white;
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    transition: all 0.2s;
+    border: 1px solid rgb(139 146 176 / 0.2);
+  }
+
+  .btn-secondary:hover {
+    background-color: #1F2749;
   }
 
   .card {
-    @apply bg-[#151B3D] rounded-xl p-6 border border-[#8B92B0]/10 shadow-lg;
+    background-color: #151B3D;
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    border: 1px solid rgb(139 146 176 / 0.1);
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
   }
 
   .card-hover {
-    @apply card hover:border-[#FF6B00]/30 hover:shadow-xl transition-all duration-300;
+    background-color: #151B3D;
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    border: 1px solid rgb(139 146 176 / 0.1);
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+    transition: all 0.3s;
+  }
+
+  .card-hover:hover {
+    border-color: rgb(255 107 0 / 0.3);
+    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1);
   }
 
   .input-field {
-    @apply bg-[#0A0E27] border border-[#8B92B0]/20 rounded-lg px-4 py-2 text-white placeholder-[#8B92B0] focus:outline-none focus:border-[#FF6B00] focus:ring-1 focus:ring-[#FF6B00] transition-all;
+    background-color: #0A0E27;
+    border: 1px solid rgb(139 146 176 / 0.2);
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+    color: white;
+    transition: all 0.2s;
+  }
+
+  .input-field::placeholder {
+    color: #8B92B0;
+  }
+
+  .input-field:focus {
+    outline: none;
+    border-color: #FF6B00;
+    box-shadow: 0 0 0 1px #FF6B00;
   }
 
   .badge-success {
-    @apply bg-[#00D68F]/10 text-[#00D68F] px-3 py-1 rounded-full text-sm font-medium;
+    background-color: rgb(0 214 143 / 0.1);
+    color: #00D68F;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 500;
   }
 
   .badge-warning {
-    @apply bg-[#FFB946]/10 text-[#FFB946] px-3 py-1 rounded-full text-sm font-medium;
+    background-color: rgb(255 185 70 / 0.1);
+    color: #FFB946;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 500;
   }
 
   .badge-error {
-    @apply bg-[#FF4757]/10 text-[#FF4757] px-3 py-1 rounded-full text-sm font-medium;
+    background-color: rgb(255 71 87 / 0.1);
+    color: #FF4757;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 500;
   }
 
   .badge-info {
-    @apply bg-[#FF6B00]/10 text-[#FF6B00] px-3 py-1 rounded-full text-sm font-medium;
+    background-color: rgb(255 107 0 / 0.1);
+    color: #FF6B00;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 500;
   }
 
   .gradient-text {
-    @apply bg-gradient-to-r from-[#FF6B00] to-[#FF8533] bg-clip-text text-transparent;
+    background: linear-gradient(to right, #FF6B00, #FF8533);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
   }
 
   .pulse-orange {
-    @apply animate-pulse;
-    animation-duration: 2s;
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   }
 }
 
